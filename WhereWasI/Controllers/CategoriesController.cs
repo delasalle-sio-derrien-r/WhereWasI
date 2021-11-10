@@ -23,7 +23,7 @@ namespace WhereWasI.Controllers
 
         // GET: api/Categories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<List<Category>> GetCategories()
         {
             return await _context.Categories.ToListAsync();
         }

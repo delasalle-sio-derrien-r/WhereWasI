@@ -43,37 +43,37 @@ namespace WhereWasI.Controllers
             return item;
         }
 
-        //// PUT: api/Items/5
-        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
-        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutItem(int id, Item item)
-        //{
-        //    if (id != item.ID)
-        //    {
-        //        return BadRequest();
-        //    }
+        // PUT: api/Items/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutItem(int id, Item item)
+        {
+            if (id != item.ID)
+            {
+                return BadRequest();
+            }
 
-        //    _context.Entry(item).State = EntityState.Modified;
+            _context.Entry(item).State = EntityState.Modified;
 
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ItemExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ItemExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
 
-        //    return NoContent();
-        //}
+            return NoContent();
+        }
 
         // POST: api/Items
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

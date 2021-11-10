@@ -93,5 +93,25 @@ namespace WhereWasI.Tests
 
             }
         }
+        
+        [Fact]
+        public async void Can_put_item()
+        {
+            using (var context = new ApplicationContext(ContextOptions))
+            {
+                var controller = new ItemsController(context);
+
+                var item = await controller.GetItem(3);
+                Assert.Equal("Test3", item.Value.Name);
+
+                item.Value.Name = "NameModified";
+
+                var actionResult = await controller.PutItem(3, item.Value);
+
+                var itemReturned = await controller.GetItem(3);
+                Assert.Equal("NameModified", itemReturned.Value.Name);
+
+            }
+        }
     }
 }

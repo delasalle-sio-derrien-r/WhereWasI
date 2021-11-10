@@ -5,7 +5,7 @@ using System.Text;
 using WhereWasI.Data;
 using WhereWasI.Models;
 
-namespace WhereWasI.Tests.CategoriesController.Tests
+namespace WhereWasI.Tests
 {
     public class CategoriesControllerTest
     {
@@ -30,6 +30,7 @@ namespace WhereWasI.Tests.CategoriesController.Tests
                     new Category{Name="Test2"},
                     new Category{Name="Test3"},
                     new Category{Name="Test4"},
+                    new Category{Name="Test5"},
                 };
 
                 foreach (Category category in categories)
