@@ -36,21 +36,17 @@ namespace WhereWasI.Data
 
             var itemCategories = new ItemCategory[]
             {
-                new ItemCategory {CategoryID=1, ItemID=1, Category=categories.Where(c => c.ID == 1).FirstOrDefault(), Item=items.Where(i => i.ID == 1).FirstOrDefault() },
-                new ItemCategory {CategoryID=2, ItemID=2, Category=categories.Where(c => c.ID == 2).FirstOrDefault(), Item=items.Where(i => i.ID == 2).FirstOrDefault() },
-                new ItemCategory {CategoryID=2, ItemID=3, Category=categories.Where(c => c.ID == 2).FirstOrDefault(), Item=items.Where(i => i.ID == 3).FirstOrDefault() },
-                new ItemCategory {CategoryID=3, ItemID=4, Category=categories.Where(c => c.ID == 3).FirstOrDefault(), Item=items.Where(i => i.ID == 4).FirstOrDefault() },
-                new ItemCategory {CategoryID=4, ItemID=4, Category=categories.Where(c => c.ID == 4).FirstOrDefault(), Item=items.Where(i => i.ID == 4).FirstOrDefault() },
+                new ItemCategory {CategoryID=1, ItemID=1, Category=categories.FirstOrDefault(c => c.ID == 1), Item=items.FirstOrDefault(i => i.ID == 1) },
+                new ItemCategory {CategoryID=2, ItemID=2, Category=categories.FirstOrDefault(c => c.ID == 2), Item=items.FirstOrDefault(i => i.ID == 2) },
+                new ItemCategory {CategoryID=2, ItemID=3, Category=categories.FirstOrDefault(c => c.ID == 2), Item=items.FirstOrDefault(i => i.ID == 3) },
+                new ItemCategory {CategoryID=3, ItemID=4, Category=categories.FirstOrDefault(c => c.ID == 3), Item=items.FirstOrDefault(i => i.ID == 4) },
+                new ItemCategory {CategoryID=4, ItemID=4, Category=categories.FirstOrDefault(c => c.ID == 4), Item=items.FirstOrDefault(i => i.ID == 4) },
             };
 
             foreach (Item item in items)
             {
-                //var itemCategoriesTemp = itemCategories.Where(ic => ic.ItemID == item.ID);
-                //item.ItemCategories = itemCategoriesTemp.ToList();
                 context.Items.Add(item);
             }
-            //context.SaveChanges();
-
             
             foreach (Category category in categories)
             {
