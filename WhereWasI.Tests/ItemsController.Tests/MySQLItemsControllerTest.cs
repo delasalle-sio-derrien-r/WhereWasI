@@ -87,7 +87,7 @@ namespace WhereWasI.Tests
 
                 Assert.Equal("Test1", item.Name);
 
-                actionResult = await controller.DeleteItem(item.ID);
+                await controller.DeleteItem(item.ID);
                 actionResult = await controller.GetItem(1);
 
                 Assert.Null(actionResult.Value);
@@ -107,7 +107,7 @@ namespace WhereWasI.Tests
 
                 item.Value.Name = "NameModified";
 
-                var actionResult = await controller.PutItem(3, item.Value);
+                await controller.PutItem(3, item.Value);
 
                 var itemReturned = await controller.GetItem(3);
                 Assert.Equal("NameModified", itemReturned.Value.Name);
@@ -184,13 +184,34 @@ namespace WhereWasI.Tests
 
                 category.Value.Name = "NameModified";
 
-                var actionResult = await controller.PutCategory(3, category.Value);
+                await controller.PutCategory(3, category.Value);
 
                 var categoryReturned = await controller.GetCategory(3);
                 Assert.Equal("NameModified", categoryReturned.Value.Name);
 
             }
         }
+
+        [Fact]
+        public async void Can_delete_category()
+        {
+            using (var context = new ApplicationContext(ContextOptions))
+            {
+                var controller = new CategoriesController(context);
+
+                var actionResult = await controller.GetCategory(1);
+                var category = actionResult.Value;
+
+                Assert.Equal("Test1", category.Name);
+
+                await controller.DeleteCategory(category.ID);
+                actionResult = await controller.GetCategory(1);
+
+                Assert.Null(actionResult.Value);
+
+            }
+        }
+
         #endregion
     }
 }
