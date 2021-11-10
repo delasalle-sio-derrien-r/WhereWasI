@@ -36,6 +36,20 @@ namespace WhereWasI.Tests
                     context.Add(item);
                 }
 
+                var categories = new Category[]
+                {
+                    new Category{Name="Test1"},
+                    new Category{Name="Test2"},
+                    new Category{Name="Test3"},
+                    new Category{Name="Test4"},
+                    new Category{Name="Test5"},
+                };
+
+                foreach (Category category in categories)
+                {
+                    context.Add(category);
+                }
+
                 context.SaveChanges();
             }
         }
